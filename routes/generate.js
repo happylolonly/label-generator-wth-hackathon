@@ -13,7 +13,7 @@ module.exports = (app) => {
 
       loadImagesFromSearch(words[1]).then(data => {
         const { name, encodingFormat, contentUrl } = data;
-        let fullName = `${name.split(' ')[0]}.${encodingFormat}`;
+        let fullName = `${Date.parse(new Date())}.${encodingFormat}`;
         console.log(fullName);
 
         axios({
