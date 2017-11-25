@@ -7,6 +7,8 @@ module.exports = (search) => new Promise((resolve, reject) => {
       if (error) {
         reject(error);
       }
+      console.log(search);
+      console.log(body);
       const random = Math.round(Math.random() * 4);
       resolve(body.value[random]);
     });
