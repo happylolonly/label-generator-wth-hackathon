@@ -17,7 +17,7 @@ module.exports = () => {
               if (returnArr.length > 0){
                 resolve(returnArr);
               }
-              reject('No such names')
+              resolve(query)
             })
             .catch(err => reject(err));
     });

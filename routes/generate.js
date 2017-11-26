@@ -33,11 +33,9 @@ module.exports = (app) => {
               console.log(title);
               var baseImgPath = 'public/' + fullName;
               generateImage(baseImgPath, 'public/shab.png', title).then((outImgPath) => {
-                console.log(outImgPath);
-                appendText(outImgPath, title).then((path) => {
-                  console.log('path', path);
-                  res.send(path.split('public/')[1]);
-                })
+                res.send(outImgPath.split('public/')[1]);
+                // appendText(outImgPath, title).then((path) => {
+                // })
 
               })
             });
