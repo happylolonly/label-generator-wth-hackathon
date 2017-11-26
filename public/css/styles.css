@@ -25,7 +25,7 @@ body{
 	left: 0;
 	height: 16px;
 	width: 16px;
-	border: 1px solid #dad9d9;
+	border: 1px solid #a60328;
 	border-radius: 50%;
 }
 .radio input:checked + label::after{
@@ -45,6 +45,7 @@ main{
 }
 h1{
 	text-align: center;
+	margin-bottom: 40px;
 }
 .wrapper{
 	display: flex;
@@ -104,4 +105,74 @@ header{
 }
 .dislike{
 	background-position: 5px -30px;
+}
+.second-step__result{
+	text-align: center;
+}
+img{
+	max-width: 100%;
+}
+.preloader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: 9999999999999;
+    background: transparent;
+    transition: 0.5s all;
+}
+.preloader-visible{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    background: rgba(0,0,0,0.5);
+}
+.second-step__buttons{
+	text-align: center;
+	margin-top: 20px;
+}
+@keyframes myrotate{
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+.preloader img{
+	animation: myrotate 3s infinite linear;
+}
+.third-step__image{
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.third-step__bottle{
+	position: relative;
+}
+.third-step__bottle #label{
+	position: absolute;
+	top: 119px;
+    left: 3px;
+    width: 63px;
+    height: 107px;
+}
+.third-step__bottle::after{
+	content: '';
+	position: absolute;
+	top: 119px;
+    left: 3px;
+    width: 63px;
+    height: 107px;
+    display: block;
+    background: linear-gradient(to right,
+    	transparent 0%,
+    	rgba(255,255,255,0.7) 8px,
+    	rgba(255,255,255,0.4) 28px,
+    	transparent 23px,
+    	transparent 46px,
+    	rgba(0,0,0,0.5) 100%);
 }
