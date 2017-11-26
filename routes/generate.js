@@ -16,6 +16,10 @@ module.exports = (app) => {
       console.log(title);
       loadImagesFromSearch(title).then(data => {
         console.log("data: "+ data);
+        if (!data) {
+          reject('no search');
+          return;
+        }
         const { name, encodingFormat, contentUrl } = data;
         let fullName = `${Date.parse(new Date())}.${encodingFormat}`;
         console.log(fullName);
