@@ -27,7 +27,9 @@ const generateImage = (image1, image2, text) => {
           image.resize(500, 450);
           image2.resize(500, 450);
           image.composite(image2, 0, 0);
-          image.print(font, 200, 330, transliterate(text));
+          var textPosX = 250 - (text.length) * 8;
+          console.log(textPosX)
+          image.print(font, textPosX, 330, transliterate(text));
           image.quality(60);
           image.write(`${image1}`); // save
           resolve(image1);
