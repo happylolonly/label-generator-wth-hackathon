@@ -5,13 +5,14 @@ module.exports = (search) => new Promise((resolve, reject) => {
 
   const words = search.split(' ');
   const word = words[1] || words[0];
+  console.log(word);
   Bing.images(word, {
     count: 5,
   }, (error, res, body) => {
       if (error) {
         reject(error);
       }
-      const random = Math.round(Math.random() * 4);
+      const random = Math.round(Math.random() * body.value.length);
       resolve(body.value[random]);
     });
 });
