@@ -12,7 +12,7 @@ module.exports = (search) => new Promise((resolve, reject) => {
       if (error) {
         reject(error);
       }
-      const random = Math.round(Math.random() * body.value.length);
+      const random = Math.round(Math.random() * 4);
       resolve(body.value[random]);
     });
 });
