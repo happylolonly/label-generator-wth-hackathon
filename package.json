@@ -16,6 +16,7 @@
     "gm": "^1.23.0",
     "google-images": "^2.1.0",
     "jimp": "^0.2.28",
+    "morgan": "^1.9.0",
     "node-bing-api": "^3.2.2",
     "nodemon": "^1.12.1"
   }
