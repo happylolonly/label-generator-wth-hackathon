@@ -4,7 +4,6 @@ const axios = require('axios');
 const loadWords = require('../helpers/loadWords');
 const loadImagesFromSearch = require('../helpers/loadImages');
 const generateImage = require('../helpers/imageGenerator');
-const appendText = require('../helpers/imageTextAppender');
 
 module.exports = (app) => {
 
@@ -15,7 +14,7 @@ module.exports = (app) => {
       const title = titles[rand];
       console.log(title);
       loadImagesFromSearch(title).then(data => {
-        console.log("data: "+ data);
+        console.log("data: " + data);
         const { name, encodingFormat, contentUrl } = data;
         let fullName = `${Date.parse(new Date())}.${encodingFormat}`;
         console.log(fullName);
@@ -33,12 +32,8 @@ module.exports = (app) => {
               console.log(title);
               var baseImgPath = 'public/' + fullName;
               generateImage(baseImgPath, 'public/shab.png', title).then((outImgPath) => {
-                console.log(outImgPath);
-                appendText(outImgPath, title).then((path) => {
-                  console.log('path', path);
-                  res.send(path.split('public/')[1]);
-                })
-
+                console.log('final path', outImgPath);
+                res.send(outImgPath.split('public/')[1]);
               })
             });
           })
