@@ -1,5 +1,10 @@
 node_modules
 
+public/*.jpeg
+public/*.jpg
+public/*.png
+public/*.gif
+
 # Logs
 logs
 *.log
