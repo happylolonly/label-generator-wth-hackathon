@@ -11,3 +11,5 @@
 
 
 Посмотреть можно тут тут [label-generator.herokuapp.com](https://label-generator.herokuapp.com) (хероку может просыпаться около 30 сек, необходимо подождать)
+
+![new mockup 1](https://user-images.githubusercontent.com/18665326/33413094-6f1a837a-d5a0-11e7-8249-291621465742.png)
