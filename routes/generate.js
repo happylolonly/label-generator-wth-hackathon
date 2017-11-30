@@ -4,47 +4,50 @@ const axios = require('axios');
 const loadWords = require('../helpers/loadWords');
 const loadImagesFromSearch = require('../helpers/loadImages');
 const generateImage = require('../helpers/imageGenerator');
-const appendText = require('../helpers/imageTextAppender');
+
 
 module.exports = (app) => {
 
-  app.get('/api/generate', (req, res) => {
+  app.get('/api/generate', async (req, res) => {
 
-    loadWords().then(titles => {
+    try {
+      const titles = await loadWords();
       const rand = Math.floor(Math.random() * titles.length);
       const title = titles[rand];
       console.log(title);
-      loadImagesFromSearch(title).then(data => {
-        console.log("data: "+ data);
-        if (!data) {
-          reject('no search');
-          return;
-        }
-        const { name, encodingFormat, contentUrl } = data;
-        let fullName = `${Date.parse(new Date())}.${encodingFormat}`;
-        console.log(fullName);
+      const data = await loadImagesFromSearch(title);
+      console.log("data: " + data);
+      if (!data) {
+        console.log('no search');
+        res.end();
+        return;
+      }
+      const { encodingFormat, contentUrl } = data;
+      const fullName = `${Date.parse(new Date())}.${encodingFormat}`;
+      console.log(fullName);
 
-        axios({
-          method: 'get',
-          url: contentUrl,
-          responseType: 'stream'
-        })
-          .then(response => {
-            const wstream = fs.createWriteStream('public/' + fullName);
-            response.data.pipe(wstream);
-            wstream.on('finish', () => {
-              console.log('file has been written');
-              console.log(title);
-              var baseImgPath = 'public/' + fullName;
-              generateImage(baseImgPath, 'public/shab.png', title).then((outImgPath) => {
-                res.send(outImgPath.split('public/')[1]);
-                // appendText(outImgPath, title).then((path) => {
-                // })
+      const response = await axios({
+        method: 'get',
+        url: contentUrl,
+        responseType: 'stream'
+      });
 
-              })
-            });
-          })
-      })
-    });
+      const wstream = fs.createWriteStream('public/' + fullName);
+      response.data.pipe(wstream);
+
+      wstream.on('finish', async () => {
+        console.log('file has been written');
+        console.log(title);
+
+        const baseImgPath = 'public/' + fullName;
+        const outImgPath = await generateImage(baseImgPath, 'public/shab.png', title);
+
+        res.send(outImgPath.split('public/')[1]);
+      });
+
+    } catch(error) {
+      throw new Error('error:', error);
+    }
+
   });
 };
