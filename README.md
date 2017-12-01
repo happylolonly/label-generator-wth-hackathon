@@ -11,10 +11,8 @@
 
 Ветки:
 
-1. master - продакшен
-2. dev - разработка
-
-
-Посмотреть можно тут [label-generator.herokuapp.com](https://label-generator.herokuapp.com) (хероку может просыпаться около 30 сек, необходимо подождать)
+1. master - продакшен - [label-generator.herokuapp.com](https://label-generator.herokuapp.com)
+2. dev - разработка - [label-generator-dev.herokuapp.com](https://label-generator-dev.herokuapp.com)
+Хероку может просыпаться около 30 сек, необходимо подождать.
 
 ![new mockup 1](https://user-images.githubusercontent.com/18665326/33413094-6f1a837a-d5a0-11e7-8249-291621465742.png)
