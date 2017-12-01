@@ -1,15 +1,20 @@
-## What the hack hackathon app
+## What the hack hackathon label generator
 
-#### Генератор этикеток для вин
+#### Генератор этикеток
 
 Для запуска:
 
 1. скопировать репозиторий
-2. поставить [Node.js](https://nodejs.org/en) (6.x.x или выше версию)
+2. поставить [Node.js](https://nodejs.org/en) (8.x.x или выше версию)
 3. из папки выполнить команду `npm install`
 4. `npm start` и перейти на http://localhost:3090
 
+Ветки:
 
-Посмотреть можно тут тут [label-generator.herokuapp.com](https://label-generator.herokuapp.com) (хероку может просыпаться около 30 сек, необходимо подождать)
+1. master - продакшен
+2. dev - разработка
+
+
+Посмотреть можно тут [label-generator.herokuapp.com](https://label-generator.herokuapp.com) (хероку может просыпаться около 30 сек, необходимо подождать)
 
 ![new mockup 1](https://user-images.githubusercontent.com/18665326/33413094-6f1a837a-d5a0-11e7-8249-291621465742.png)
