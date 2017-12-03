@@ -1,7 +1,7 @@
-const Bing = require('../modules/bing');
-const credentials = require('../credentials');
+const Bing = require('../../modules/bing');
+const config = require('../config');
 
-const bing = Bing({ accKey: credentials.bing });
+const bing = Bing({ accKey: config.bingKey });
 
 module.exports = (search) => {
 
