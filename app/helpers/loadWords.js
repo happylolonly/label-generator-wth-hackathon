@@ -5,7 +5,7 @@ const fs = require('fs');
 module.exports = () => {
 
   return new Promise((resolve, reject) => {
-    const filename = __dirname + '/../namesRus.txt';
+    const filename = __dirname + '/../dictionaries/namesRus.txt';
     fs.readFile(filename, 'utf8', function(err, data) {
       if (err) throw reject(err);
       const vineTitlesArr = data.split('\n');
