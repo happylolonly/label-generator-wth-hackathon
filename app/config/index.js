@@ -5,4 +5,5 @@ module.exports = {
   'db': {
     url: 'mongodb://user:secretpass@ds129156.mlab.com:29156/labels',
   },
+  'pixabayKey': '7303113-cf8e6d3edeb72212b45ed8c9e',
 };
