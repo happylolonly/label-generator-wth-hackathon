@@ -1,16 +1,14 @@
 const express = require('express');
-const morgan = require('morgan');
+const config = require('./app/config');
 
 const app = express();
 
-app.use(morgan('combined'));
-app.use(express.static(__dirname + '/public'));
+require('./app/helpers/db')();
+require('./app/middlewares')(app, express);
+require('./app/routes')(app);
 
-require('./routes/index')(app);
-require('./routes/generate')(app);
+const port = process.env.PORT || config.port;
 
-const port = process.env.PORT || 3090;
-
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log('Server ready on:', port);
 });

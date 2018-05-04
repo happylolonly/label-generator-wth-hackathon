@@ -11,24 +11,25 @@ module.exports = (app) => {
   app.get('/api/generate', async (req, res) => {
 
     try {
-      const titles = await loadWords();
-      const rand = Math.floor(Math.random() * titles.length);
-      const title = titles[rand];
+      const words = await loadWords();
+      console.log(words);
+      const rand = Math.floor(Math.random() * words.length);
+      const title = words[rand];
       console.log(title);
-      const data = await loadImagesFromSearch(title);
-      console.log("data: " + data);
-      if (!data) {
-        console.log('no search');
+
+      const image = await loadImagesFromSearch(title);
+
+      const { url, encodingFormat } = image;
+      console.log("Image: \n", image);
+      if (!url) {
+        // обработать ошибку
         res.end();
         return;
       }
-      const { encodingFormat, contentUrl } = data;
       const fullName = `${Date.parse(new Date())}.${encodingFormat}`;
       console.log(fullName);
 
-      const response = await axios({
-        method: 'get',
-        url: contentUrl,
+      const response = await axios.get(url, {
         responseType: 'stream'
       });
 
@@ -46,7 +47,8 @@ module.exports = (app) => {
       });
 
     } catch(error) {
-      throw new Error('error:', error);
+      // throw new Error('error:', error);
+      console.log(error);
     }
 
   });
